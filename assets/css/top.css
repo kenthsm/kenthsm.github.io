@@ -1,103 +1,608 @@
-/*
-see: http://html5doctor.com/html-5-reset-stylesheet/
-html5doctor.com Reset Stylesheet
-v1.6.1
-Last Updated: 2010-09-17
-Author: Richard Clark - http://richclarkdesign.com
-Twitter: @rich_clark
-*/
-
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-abbr, address, cite, code,
-del, dfn, em, img, ins, kbd, q, samp,
-small, strong, sub, sup, var,
-b, i,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video {
-margin:0;
-padding:0;
-border:0;
-outline:0;
-font-size:100%;
-vertical-align:baseline;
-background:transparent;
+@charset "UTF-8";
+/* CSS Document */
+.header {
+  height: 50px;
+  background-color: #fff;
+  position: relative;
+  /*  font-family: 'Ranchers', cursive;*/
+  /*  font-weight: 800;*/
+  font-family: 'Dosis', sans-serif;
+  letter-spacing: 0.1rem;
 }
-
-body {
-line-height:1;
+.header h1 {
+  font-size: 1.8rem;
+  color: #002260;
+  text-align: left;
+  position: absolute;
+  left: 24px;
+  top: 12px;
 }
-
-article,aside,details,figcaption,figure,
-footer,header,hgroup,menu,nav,section {
-display:block;
+.header__navigation {
+  display: none;
 }
-
-nav ul {
-list-style:none;
+@media(min-width: 480px) {
+  .header {
+    max-width: 1088px; /* 1040px+24px*2マージン */
+    margin: 0 auto;
+    min-height: 80px;
+    padding: 28px 0; /* 80 - 24 = 56 / 2 = 28 */
+    box-sizing: border-box;
+  }
+  .header h1 {
+    font-size: 2.4rem;
+    top: 28px;
+  }
+  .header__navigation {
+    display: block;
+    text-align: right;
+    margin-right: 24px;
+  }
+  .header__navigation ul li {
+    display: inline;
+    font-size: 2.4rem;
+    margin: 0 10px;
+  }
+  .header__navigation a {
+    text-decoration: none;
+    color: #002260;
+  }
 }
-
-blockquote, q {
-quotes:none;
+@media(max-width: 480px) {
+  #nav-drawer {
+    padding: 10px 24px 0 0;
+    text-align: right;
+    position: relative;
+  }
+  #nav-open {
+    display: inline-block;
+    vertical-align: middle;
+    width: 25px;
+    height: 22px;
+  }
+  #nav-open span, #nav-open span:before, #nav-open span:after {
+    position: absolute;
+    height: 3px;
+    width: 25px;
+    background-color: #777;
+    display: block;
+    content: ""; /* beforeとafterに何にもないから空を作るとその空の背景色で線が作られる */
+  }
+  #nav-open span:before {
+    bottom: -8px;
+  }
+  #nav-open span:after {
+    bottom: -16px;
+  }
+  #nav-close {
+    z-index: 999; /* 値が大きいと上に重ね順が上にくる */
+    position: fixed; /* window全体に対してどの位置に表示するか→画像全てを覆える */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5; /* 透明度設定しないと真っ黒になっちゃうから */
+    display: block;
+    transform: translateX(-100%);
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+  }
+  #nav-content {
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background-color: #fff;
+    display: block;
+    text-align: left;
+    padding: 20px;
+    transform: translateX(-100%);
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+  }
+  .nav-drawer__title {
+    color: #002260;
+    display: block;
+    margin-bottom: 30px;
+    font-size: 2.4rem;
+  }
+  #nav-content ul li a {
+    text-decoration: none;
+    color: #002260;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+  }
+  #nav-input:checked ~ #nav-close {
+    transform: translateX(0%);
+  }
+  #nav-input:checked ~ #nav-content {
+    transform: translateX(0%);
+  }
+  .toy-box {
+    position: absolute;
+    bottom: 60px;
+    display: none; /* Don't remove this sentence. #test #easteregg */
+  }
+  .toy-box__rolling {
+    display: block;
+    z-index: 9999;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 1.8rem;
+    border-radius: 10px;
+    transform: translateX(0%) rotate(0deg);
+    transition: 0.8s ease;
+    background-color: #1D7FAF;
+    color: #fff;
+    border: solid 3px #006EA5;
+  }
+  .toy-box__rolling:hover {
+    transform: translateX(200px) rotate(1080deg);
+    background-color: #B53663;
+    border-color: #AC1B4E;
+  }
+  .toy-box__rolling:active {
+    transform: translateX(0%) rotate(1080deg);
+    background-color: #A0B939;
+    border-color: #93B11D;
+  }
+  .toy-box__comeback {
+    display: block;
+    z-index: 9998;
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 1.8rem;
+    border-radius: 10px;
+    background-color: #A0B939;
+    color: #fff;
+    border: solid 3px #93B11D;
+    opacity: 0.5;
+  }
 }
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-content:'';
-content:none;
+.main {
+  background-color: #eeeef2;
+  padding-bottom: 60px;
 }
-
-a {
-margin:0;
-padding:0;
-font-size:100%;
-vertical-align:baseline;
-background:transparent;
+@media (min-width: 1040px) {
+  .main {
+    padding-bottom: 120px;
+  }
 }
-
-/* change colours to suit your needs */
-ins {
-background-color:#ff9;
-color:#000;
-text-decoration:none;
+.section-top {
+  margin-bottom: 80px;
 }
-
-/* change colours to suit your needs */
-mark {
-background-color:#ff9;
-color:#000;
-font-style:italic;
-font-weight:bold;
+.section-top__image {
+  height: 375px;
+  background-image: url("../images/top/top_photo.jpg");
+  background-position: 60% center;
+  background-size: auto 150%;
+  background-repeat: no-repeat;
+  color: #000;
 }
-
-del {
-text-decoration: line-through;
+.section-top__image h2 {
+  /* ipad pro(1024px)、ipad（768px）の時に右に余白ができている */
+  margin-left: 30px; /* スマホ版で中央に表示されなかったのでwidth:105%;にしてたが右余白が発生→width削除＆左にマージン追加*/
+  padding-top: 20px;
+  font-family: 'M PLUS 1p', sans-serif;
+  letter-spacing: 0.2rem;
 }
-
-abbr[title], dfn[title] {
-border-bottom:1px dotted;
-cursor:help;
+.section-top__image-message {
+/*  font-family: 'M PLUS 1p', sans-serif;*/
+  font-family: 'Dosis', sans-serif;
+  font-size: 1.8rem;
 }
-
-table {
-border-collapse:collapse;
-border-spacing:0;
+@media (min-width: 480px) {
+  .section-top__image {
+    background-position: center;
+    height: 600px;
+  }
+  .section-top__image h2 {
+    font-size: 4.0rem;
+    text-align: left;
+    max-width: 1050px; /* ホントは1040pxだけど見た目修正 */
+    margin: 0px auto;
+    padding: 55px 20px 0; /* ホントは左24pxだけど見た目修正 */
+  }
+  .section-top__image-message {
+    text-align: left;
+    max-width: 1040px;
+    margin: 0px auto;
+    padding: 20px 24px 0;
+    font-size: 2.4rem;
+  }
 }
-
-/* change border colour to suit your needs */
-hr {
-display:block;
-height:1px;
-border:0;
-border-top:1px solid #cccccc;
-margin:1em 0;
-padding:0;
+.section-about {
+  margin-bottom: 80px;
 }
-
-input, select {
-vertical-align:middle;
+.section-about h2 {
+  color: #002260;
+  margin-bottom: 40px;
+}
+.section-about__image {
+  position: relative;
+  display: inline-block; /* なぜこれでうまくいくのかわからない */
+  box-sizing: border-box;
+}
+.section-about__image img {
+  width: 327px; /* 375 - (24 * 2) = 327 */
+  height: 385px;
+  margin: 0 auto;
+}
+.section-about__lead {
+  /* 指摘事項：About…タブレット、SPの時に写真とテキストが重なっていて写真がほぼ見えていないのがもったいないです */
+  background: rgba(255, 255, 255, 0.5);  /* 透過度：0.8→0.5 */
+  position: absolute;
+  bottom: 5px; /* なぜかずれちゃうので調整 */
+  padding: 15px 30px;
+  max-height: 250px;
+}
+.section-about__lead h3 {
+  font-family: 'Sawarabi Mincho', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.3rem;
+  color: #002260;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.section-about__lead p {
+  font-size: 1.2rem;
+  letter-spacing: 0.05rem;
+  text-align: left;
+  margin-bottom: 20px;
+  color: #000;
+}
+/* 1040px以下の時、説明文が切れちゃうので */
+@media (min-width: 1040px) {
+  .section-about h2 {
+    font-size: 4.8rem;
+    padding-bottom: 40px;
+    border-bottom: solid 2px #aaaaaa;
+    max-width: 968px; /* カンプがその幅なんで、あとmaxでないと画面幅変えると中央揃えにならない */
+    margin: 0 auto 40px;
+  }
+  .section-about__image {
+    display: inline-block;
+    width: 1040px;
+    text-align: left;
+  }
+  .section-about__image img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover; /* 画像を綺麗に拡大縮小を比率保ったまま嵌める */
+    object-position: 0 0; /* 画像を左上からフィットさせる */
+    display: inline-block;
+  }
+  .section-about__lead {
+    postion: static;
+    display: inline-block;
+    top: 0;
+    margin-left: 20px;
+    max-height: 300px;
+    padding: 30px 40px;
+  }
+  .section-about__lead h3 {
+    text-align: center;
+    font-size: 2.6rem;
+    letter-spacing: 0.4rem;
+    margin-bottom: 25px;
+  }
+  .section-about__lead p {
+    font-size: 1.8rem;
+    line-height: 2.7rem;
+    letter-spacing: 0.5rem;
+  }
+}
+.section-favorites {
+  margin-bottom: 60px;
+}
+.section-favorites h2 {
+  color: #002260;
+  margin-bottom: 40px;
+}
+.section-favorites ul {
+  margin: 0 36px;
+  list-style: none;
+}
+.section-favorites ul li {
+  max-width: 240px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  text-align: left;
+}
+.section-favorites__item {
+  position: relative;
+}
+.section-favorites__item img {
+  width: 240px;
+}
+.section-favorites__item p {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  color: #fff;
+  position: absolute;
+  bottom: 5px; /* なぜ0でぴったり嵌まらないのだろう */
+}
+.section-favorites__place {
+  font-size: 1.5rem;
+  color: #333;
+  padding: 0 20px;
+/*  font-family: 'Economica', sans-serif;*/
+  font-family: 'Anaheim', sans-serif;
+  letter-spacing: 0.1rem;
+}
+.section-favorites__area02 {
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: 0.8s;
+  margin-bottom: 120px;
+}
+.btn {
+  font-family: 'Dosis', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 10px 40px;
+  transition: 0.3s ease;
+  vertical-align: middle;
+  letter-spacing: 0.1em;
+  border-radius: 10px;
+  background-color: #002260;
+  color: #fefefe;
+  border-bottom: 5px solid #001845;
+  width: 100px;
+}
+.btn:active {
+  transform: translateY(5px);
+  border-bottom: 0px solid #001845;
+}
+#more-input {
+  display: none;
+}
+#more-input:checked ~ .section-favorites__area02 {
+  padding: 10px 0;
+  height: auto;
+  opacity: 1;
+  margin-bottom: 60px;
+}
+#more-input:checked ~ .btn {
+  display: none;
+}
+/* 中途半端な幅の時に訳わからなくなるんで */
+@media (min-width: 480px) {
+  .section-favorites ul li {
+    display: inline-block;
+    margin: 0 40px 20px; /* この横マージンは1040up時消さねばならない */
+  }
+}
+@media (min-width: 1040px) {
+  .section-favorites h2 {
+    font-size: 4.8rem;
+    padding-bottom: 40px;
+    border-bottom: solid 2px #aaaaaa;
+    max-width: 968px;
+    margin: 0 auto 40px;
+  }
+  .section-favorites__area01 {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .section-favorites__area02 {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+    margin-bottom: 60px;
+  }
+  .section-favorites ul {
+    width: 1040px;
+    display: flex;
+  }
+  .section-favorites ul li {
+    margin: 0 auto 40px; /* これで480up時の横マージンを消す */
+  }
+  .section-favorites ul li:first-child {
+    margin-left: 0;
+  }
+  .section-favorites ul li:last-child {
+    margin-right: 0;
+  }
+  .btn {
+    display: none;
+  }
+}
+.section-access {
+  background-color: #fff;
+  padding-top: 60px;
+  margin-bottom: 60px;
+}
+.section-access h2 {
+  color: #002260;
+  margin-bottom: 40px;
+}
+.section-access address {
+  font-style: normal;
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  padding: 0 40px;
+}
+.section-access__break:after {
+  content: "\A"; /* 改行の意 */
+  white-space: pre; /* 半角スペースを改行にする */
+}
+.section-access__map {
+  height: 330px;
+}
+.section-access__map iframe {
+  width: 100%;
+  height: 100%;
+  border: solid 1px #333;
+}
+@media (min-width: 1040px) {
+  .section-access {
+    max-width: 1040px;
+    margin: 0 auto 60px;
+    padding-bottom: 40px;
+  }
+  .section-access h2 {
+    font-size: 4.8rem;
+    padding-bottom: 40px;
+    border-bottom: solid 2px #aaaaaa;
+    width: 968px;
+    margin: 0 auto 40px;
+  }
+  .section-access address {
+    font-size: 1.8rem;
+    line-height: 3.0rem;
+  }
+  .section-access__break:after {
+    content: "";
+  }
+  .section-access__map {
+    max-width: 840px; /* カンプは枠の太さも考慮してるから838だったけども */
+    height: 340px;
+    margin: 0 auto;
+  }
+}
+.section-news {
+  background-color: #fff;
+  padding-top: 60px;
+}
+.section-news h2 {
+  color: #002260;
+  margin-bottom: 40px;
+}
+.section-news ol {
+  list-style: none;
+  padding: 0 24px;
+}
+.section-news ol li {
+  text-align: left;
+  padding-bottom: 40px;
+  font-size: 1.6rem;
+}
+.section-news time {
+  font-weight: 600;
+}
+.section-news time:after {
+  content: "： "
+}
+.section-news h3 {
+  display: inline;
+}
+@media (min-width:1040px) {
+  .section-news {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding-bottom: 20px; /* 既にliで40pxあるから+20で60px */
+  }
+  .section-news h2 {
+    font-size: 4.8rem;
+    padding-bottom: 40px;
+    border-bottom: solid 2px #aaaaaa;
+    width: 968px;
+    margin: 0 auto 40px;
+  }
+  .section-news ol {
+    padding: 0 140px;
+  }
+}
+.footer {
+  background-color: #002260;
+  padding: 40px 24px 30px;
+  font-size: 1.6rem;
+  position: relative;
+/*  font-family: 'Ranchers', cursive;*/
+/*  font-weight: 600;*/
+  font-family: 'Dosis', sans-serif;
+  letter-spacing: 0.1rem;
+}
+.footer__site-map {
+  margin-bottom: 30px;
+}
+.footer__site-map h2 {
+  display: none;
+}
+.footer__site-map li {
+  display: inline-block;
+  margin: 0 1px;
+}
+.footer__site-map li a {
+  text-decoration: none;
+  color: #7d7e9c;
+}
+.footer__sns-links {
+  margin-bottom: 40px;
+}
+.footer__sns-links ul li {
+  display: inline-block;
+  width: 20px;
+  margin: 0 10px;
+}
+.footer__sns-links img {
+  width: 100%;
+}
+.footer__bottom small {
+  color: #fff;
+}
+.footer__bottom a {
+  border: solid 2px #cdd6dd;
+  padding: 5px 6px;
+  position: absolute;
+  right: 24px;
+  bottom: 30px;
+}
+@media (min-width: 1040px) {
+  .footer {
+    margin: 0;
+    padding: 0; /* container作ったんでfooter自体のマージンとかは0 */
+    min-height: 200px;
+  }
+  .footer__container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding-top: 40px;
+    text-align: left;
+    display: flex;
+  }
+  .footer__site-map h2 {
+    display: inline-block;
+    width: 120px;
+    vertical-align: top;
+    color: #FFF;
+  }
+  .footer__site-map ul {
+    display: inline-block;
+    margin-left: 40px;
+  }
+  .footer__site-map ul li {
+    display: block;
+  }
+  .footer__sns-links {
+    margin-left: auto;
+  }
+  .footer__bottom small {
+    position: absolute;
+    bottom: 0px;
+    left: 50%; /* absolute（絶対座標）にしてるからwidthを指定したりmargin: 0 auto;を使っても中央揃えにならないんだ */
+    transform: translate(-50%, 0); /* これで要素の幅の半分を引き戻す */
+    padding-bottom: 40px;
+  }
+  .footer__bottom a {
+    display: none;
+  }
 }
