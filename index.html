@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name = "viewport" content = "width = device-width, initial-scale=1, user-scalable=yes">
+<meta name="description" content="ワンワンワン！（HTML/CSS課題で作成したプロフィールサイトです！）">
+<meta property="og:title" content="ワンワンワン！（ワンワンワン！）"/>
+<meta property="og:site_name" content="My Website">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja-JP">
+<meta property="og:image" content="assets/images/common/ogp.jpg"><!-- 1200*630px 以上が良い -->
+<meta property="og:description" content="ワンワンワン！（HTML/CSS課題で作成したプロフィールサイトです！）"/>
+<meta name="twitter:card" content="summary" />
+<link rel="stylesheet" href="assets/css/reset.css">
+<link rel="stylesheet" href="assets/css/common.css">
+<link rel="stylesheet" href="assets/css/top.css">
+<link rel="icon" href="assets/images/common/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="assets/images/common/apple-touch-icon.png">
+<!-- Googleフォント -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Anaheim&family=Dosis:wght@800&family=Economica:wght@700&family=M+PLUS+1p:wght@900&family=M+PLUS+Rounded+1c&family=Noto+Sans+JP&family=Ranchers&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+<title>I'M YOUR DOG</title>
+</head>
+
+<body>
+<header class="header">
+  <h1 id="top">I'M YOUR DOG</h1>
+  <div id="nav-drawer">
+    <input id="nav-input" class="none" type="checkbox">
+    <label id="nav-open" for="nav-input"><span></span></label>
+    <label id="nav-close" class="none" for="nav-input"></label>
+    <nav id="nav-content" class="header__navigation">
+      <div class="nav-drawer__title none">I'M YOUR DOG</div>
+      <ul>
+        <li><a href="#top" class="none">TOP</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#favorites">FAVORITES</a></li>
+        <li><a href="#access">ACCESS</a></li>
+        <li><a href="#news">NEWS</a></li>
+      </ul>
+      <div class="toy-box">
+        <p class="toy-box__rolling none">Don't touch me!</p>
+        <p class="toy-box__comeback none">Come back!</p>
+      </div>
+    </nav>
+  </div>
+</header>
+<main class="main">
+  <section class="section-top">
+    <div class="section-top__image">
+      <h2>いぬになりたい。</h2>
+      <div class="section-top__image-message">I wanna be your dog.</div>
+    </div>
+  </section>
+  <section class="section-about">
+    <h2 id="about">ABOUT</h2>
+    <div class="section-about__image"> <img src="assets/images/top/about_photo.jpg" alt="犬">
+      <div class="section-about__lead">
+        <h3>ハシモト ケント</h3>
+        <p>元々SIerのSEやってました。今、目指しているのはWeb系バックエンドのエンジニアですが、Webデザインとフロントエンドの勉強をしています。突然ですけど、犬っていいですよね。なんか自由で。なんか気が抜けてて。僕は旅をしてる時、景色でも人でも猫でもなく、犬ばっかり写真に撮ってます。そんなつもりはなかったのに、いつの間にか。あぁ本当は犬になりたい。まぁ既に会社の犬ではあるんですけども。</p>
+      </div>
+    </div>
+  </section>
+  <section class="section-favorites">
+    <h2 id="favorites">FAVORITES</h2>
+    <div class="section-favorites__area01">
+      <ul>
+        <li>
+          <div class="section-favorites__item"> <img src="assets/images/top/photo1.jpg" alt="犬">
+            <p>ホントは後ろの女の子を撮りたかっただけです。</p>
+          </div>
+          <p class="section-favorites__place">@KohTao Thailand</p>
+        </li>
+        <li>
+          <div class="section-favorites__item"> <img src="assets/images/top/photo2.jpg" alt="犬">
+            <p>犬だけ撮るつもりだったのに。良い笑顔の家族。</p>
+          </div>
+          <p class="section-favorites__place">@Sanfrancisco USA</p>
+        </li>
+        <li>
+          <div class="section-favorites__item"> <img src="assets/images/top/photo3.jpg" alt="犬">
+            <p>日が落ちるギリギリで現れ、消えていった犬。</p>
+          </div>
+          <p class="section-favorites__place">@Krabi Thailand</p>
+        </li>
+        <li>
+          <div class="section-favorites__item"> <img src="assets/images/top/photo4.jpg" alt="犬">
+            <p>どこにでも犬っているんだなぁと思った夏。</p>
+          </div>
+          <p class="section-favorites__place">@Santorini Greece</p>
+        </li>
+      </ul>
+    </div>
+    <input id="more-input" class="" type="checkbox">
+    <label id="more-open" for="more-input" class="btn">And More</label>
+    <div class="section-favorites__area02">
+      <ul>
+        <li>
+          <div class="section-favorites__item"> <img src="assets/images/top/photo5.jpg" alt="犬">
+            <p>確実に寝てるんだけど、頑なに横にならない犬。</p>
+          </div>
+          <p class="section-favorites__place">@Bohol Philippines</p>
+        </li>
+        <li>
+          <div class="section-favorites__item"> <img src="assets/images/top/photo6.jpg" alt="犬">
+            <p>グランドキャニオンなのに景色を撮らない選択。</p>
+          </div>
+          <p class="section-favorites__place">@GrandCanyon USA</p>
+        </li>
+        <li>
+          <div class="section-favorites__item"> <img src="assets/images/top/photo7.jpg" alt="犬">
+            <p>ブルドックがいると、おっ!てなりますよね。</p>
+          </div>
+          <p class="section-favorites__place">@Mont Saint-Michel France</p>
+        </li>
+        <li>
+          <div class="section-favorites__item"> <img src="assets/images/top/photo8.jpg" alt="犬">
+            <p>どういう感情の表情なのだろうかそれは。</p>
+          </div>
+          <p class="section-favorites__place">@Torino Italy</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="section-access">
+    <h2 id="access">ACCESS</h2>
+    <address>
+    忠犬として有名な秋田犬、<span class="section-access__break"></span>ハチ公の銅像がある人気の待ち合わせ場所。<br>
+    〒150-0043 東京都渋谷区道玄坂２丁目１<br>
+    時間： 24 時間営業<br>
+    電話： 03-3462-8311
+    </address>
+    <div class="section-access__map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d975.1879146674044!2d139.70019900146085!3d35.65902169970449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b57efbd57c7%3A0x217e9d9fe306fba!2z5b-g54qs44OP44OB5YWs5YOP!5e0!3m2!1sja!2sjp!4v1606555868368!5m2!1sja!2sjp" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+  </section>
+  <section class="section-news">
+    <h2 id="news">NEWS</h2>
+    <ol>
+      <li>
+        <time datetime="2020-08-06">2020/8/6</time>
+        <h3>アル、去勢手術を受ける。</h3>
+        <p>先住犬との折り合いがつかず、熟慮の末、去勢手術を決行。現状、改善は見られず。</p>
+      </li>
+      <li>
+        <time datetime="2019-08-28">2019/8/28</time>
+        <h3>通算3匹目の犬を飼う。</h3>
+        <p>生後3ヶ月の黒のラブラドールレトリバーを家に迎える。名前は「アル」。</p>
+      </li>
+    </ol>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer__container">
+    <nav class="footer__site-map">
+      <h2>I'M YOUR DOG</h2>
+      <ul>
+        <li><a href="#top">TOP</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#favorites">FAVORITES</a></li>
+        <li><a href="#access">ACCESS</a></li>
+        <li><a href="#news">NEWS</a></li>
+      </ul>
+    </nav>
+    <nav class="footer__sns-links">
+      <ul>
+        <li><a href="https://www.instagram.com/therock/?hl=ja" target="_blank"><img src="assets/images/common/instagram.png" alt="Instagram icon"></a></li>
+        <li><a href="https://twitter.com/realdonaldtrump" target="_blank"><img src="assets/images/common/twitter.png" alt="Twitter icon"></a></li>
+        <li><a href="https://www.facebook.com/JasonStatham/" target="_blank"><img src="assets/images/common/facebook.png" alt="Facebook icon"></a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="footer__bottom"> <small>©️I'M YOUR DOG</small> <a href="#top"><img src="assets/images/common/arrow.png" alt="TOPに戻る"></a> </div>
+</footer>
+</body>
+</html>
