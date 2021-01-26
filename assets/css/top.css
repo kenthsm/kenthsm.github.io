@@ -124,7 +124,7 @@
   .toy-box {
     position: absolute;
     bottom: 60px;
-    display: none; /* Don't remove this sentence. #test #easteregg */
+    /*display: none;*/ /* If strange box annoy you, remove this commentout. #test #easteregg */
   }
   .toy-box__rolling {
     display: block;
